@@ -1,0 +1,31 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- vue js -->
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <!-- vue axios -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+    <script src="js/vue-script.js"></script>
+    <title>vue-boolfix</title>
+  </head>
+  <body>
+    <div id="app">
+      <div class="search-cont">
+        <input type="text" v-model="userInput">
+        <button @click="search">enter</button>
+      </div>
+      <div class="result-cont">
+        <div v-for="(result, index) in searchResult" class="result-item">
+          <ul>
+            <li>{{ result.title }}</li>
+            <li>{{ result.original_title }}</li>
+            <li v-html="flagGen(index)"></li>
+            <li>{{ result.vote_average }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
