@@ -37,8 +37,11 @@ li {
 }
 
 i.fa-star {
-  color: gold;
   margin-left: 5px;
+}
+
+i.gold {
+  color: gold;
 }
 
 .search-cont {

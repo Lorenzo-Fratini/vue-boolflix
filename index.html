@@ -14,14 +14,17 @@
   </head>
   <body>
     <div id="app">
+
       <div class="search-cont">
         <input type="text" v-model="userInput">
         <button @click="search">enter</button>
       </div>
+
       <div class="result-cont">
         <div v-for="(result, index) in searchResults" class="result-item">
           <div>
-            <img :src="posterGen(index)" alt="Poster not found">
+            <img v-if="result.poster_path == null" src="img/default.jpg" alt="">
+            <img v-else :src="imgCall + result.poster_path" alt="Poster not found">
           </div>
           <div class="hover-watch">
             <ul>
@@ -29,17 +32,21 @@
               <li>Titolo originale: {{ result.original_title }}</li>
               <li>
                 Lingua: 
-                <span v-html="flagGen(index)"></span>
+                <span v-html="flagSrc[result.original_language]"></span>
+                <img v-if="result.original_language == 'en' || result.original_language == 'it'" :src="'img/' + flagSrc[result.original_language]" class="flag">
+                <span v-else>{{ result.original_language }}</span>
               </li>
               <li>
                 Voto: 
-                <span v-html="starGen(index)"></span>
+                <i v-for="item in starGen(result.vote_average)" class="fas fa-star gold"></i>
+                <i v-for="item in maxStars - starGen(result.vote_average)" class="fas fa-star"></i>
               </li>
               <li>Overwiew: {{ result.overview }}</li>
             </ul>
           </div>
         </div>
       </div>
+
     </div>
   </body>
 </html>
