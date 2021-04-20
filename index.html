@@ -32,7 +32,6 @@
               <li>Titolo originale: {{ result.original_title }}</li>
               <li>
                 Lingua: 
-                <span v-html="flagSrc[result.original_language]"></span>
                 <img v-if="result.original_language == 'en' || result.original_language == 'it'" :src="'img/' + flagSrc[result.original_language]" class="flag">
                 <span v-else>{{ result.original_language }}</span>
               </li>
