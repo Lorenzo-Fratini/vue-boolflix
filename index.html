@@ -15,24 +15,32 @@
   <body>
     <div id="app">
 
-      <div class="search-cont">
-        <input type="text" v-model="userInput">
-        <button @click="search">enter</button>
-      </div>
+      <header>
+        <img :src="logoNetflix" class="logo">
+        <div>
+          <input type="text" v-model="userInput" @keyup.enter="search" placeholder="Search">
+        </div>
+      </header>
 
+      <div class="searched-cont">
+        <h2 :class="headClass">Risultati per : {{ searched }}</h2>
+      </div>
       <div class="result-cont">
+      
         <div v-for="(result, index) in searchResults" class="result-item">
           <div>
             <img v-if="result.poster_path == null" src="img/default.jpg" alt="">
-            <img v-else :src="imgCall + result.poster_path" alt="Poster not found">
+            <img v-else :src="imgCall + result.poster_path" alt="">
           </div>
           <div class="hover-watch">
             <ul>
-              <li>Titolo: {{ result.title }}</li>
+              <li>
+                <h3>{{ result.title }}</h3>
+              </li>
               <li>Titolo originale: {{ result.original_title }}</li>
               <li>
                 Lingua: 
-                <img v-if="result.original_language == 'en' || result.original_language == 'it'" :src="'img/' + flagSrc[result.original_language]" class="flag">
+                <img  v-if="isFlaggable(result.original_language)" :src="'img/' + flagSrc[result.original_language]" class="flag">
                 <span v-else>{{ result.original_language }}</span>
               </li>
               <li>
@@ -40,7 +48,7 @@
                 <i v-for="item in starGen(result.vote_average)" class="fas fa-star gold"></i>
                 <i v-for="item in maxStars - starGen(result.vote_average)" class="fas fa-star"></i>
               </li>
-              <li>Overwiew: {{ result.overview }}</li>
+              <li>{{ result.overview }}</li>
             </ul>
           </div>
         </div>

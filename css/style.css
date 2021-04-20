@@ -8,17 +8,24 @@
 
 body {
   width: 100%;
+  height: 100%;
   font-family: 'Montserrat';
-  background: #232f3f;
+  background: #111;
   color: #fff;
+}
+
+header {
+  width: 100%;
+  height: 80px;
+  padding: 0 50px;
+  margin-bottom: 50px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
 button {
-  padding: 5px;
+  padding: 5px 10px;
   border: none;
   color: #232f3f;
   background: #fff;
@@ -26,6 +33,9 @@ button {
 }
 
 input {
+  background-color: #000;
+  color: #fff;
+  border: 1px solid #fff;
   padding: 5px;
 }
 
@@ -44,25 +54,40 @@ i.gold {
   color: gold;
 }
 
-.search-cont {
+.ml-5 {
+  margin-left: 5px;
+}
+
+.logo {
+  width: 150px;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.searched-cont {
   width: 100%;
-  margin: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: 0 50px;
+  margin: 50px 0;
 }
 
 .result-cont {
-  width: 90%;
+  width: 100%;
+  padding: 0 50px;
   margin: auto;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
 }
 
 .result-item {
-  margin-bottom: 10px;
+  margin-bottom: 50px;
   position: relative;
 }
 
