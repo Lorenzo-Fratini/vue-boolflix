@@ -28,16 +28,14 @@
       <div class="result-cont">
       
         <div v-for="(result, index) in searchResults" class="result-item">
-          <div>
-            <img v-if="result.poster_path == null" src="img/default.jpg" alt="">
-            <img v-else :src="imgCall + result.poster_path" alt="">
-          </div>
+          <img v-if="result.poster_path" :src="imgCall + result.poster_path">
+          <img v-else src="img/default.jpg">
           <div class="hover-watch">
             <ul>
               <li>
                 <h3>{{ result.title }}</h3>
               </li>
-              <li>Titolo originale: {{ result.original_title }}</li>
+              <li>{{ result.original_title }}</li>
               <li>
                 Lingua: 
                 <img  v-if="isFlaggable(result.original_language)" :src="'img/' + flagSrc[result.original_language]" class="flag">
@@ -47,6 +45,13 @@
                 Voto: 
                 <i v-for="item in starGen(result.vote_average)" class="fas fa-star gold"></i>
                 <i v-for="item in maxStars - starGen(result.vote_average)" class="fas fa-star"></i>
+              </li>
+              <li>
+                <span class="genres">
+                  <span v-for="genreId in result.genre_ids" class="genre">
+                    {{ getGenres(genreId) }}
+                  </span>
+                </span>
               </li>
               <li>{{ result.overview }}</li>
             </ul>
