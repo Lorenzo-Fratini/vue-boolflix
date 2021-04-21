@@ -123,8 +123,7 @@ img.flag {
   flex-wrap: wrap;
 }
 
-.genres .genre:nth-child(n+2) {
-  margin-left: 5px;
+.genres .genre {
   margin-right: 5px;
 }
 

@@ -124,10 +124,15 @@ function init() {
 
       getGenres: function(genreId) {
           
-        const getGenreName = this.mappedGenres.filter(genre => genre[genreId]);
+        const getGenre = this.mappedGenres.filter(genre => genre[genreId]);
         
-        const genreReturn = getGenreName[0][genreId];
-        return genreReturn;
+        if (getGenre[0]) {
+
+          const thisGenre = getGenreName[0];
+          const genreReturn = thisGenre[genreId];
+
+          return genreReturn;
+        }
       }
     },
     
