@@ -128,7 +128,7 @@ function init() {
         
         if (getGenre[0]) {
 
-          const thisGenre = getGenreName[0];
+          const thisGenre = getGenre[0];
           const genreReturn = thisGenre[genreId];
 
           return genreReturn;
